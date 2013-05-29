@@ -1,0 +1,104 @@
+//COMPASS IMPORTS
+@import 'compass/css3';
+
+/* Reset */
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: absolute;
+}
+
+/* Base styles */
+#tap-indicator {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  .el {
+    position: absolute;
+    border-radius: 50%;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 0;
+    -webkit-animation-iteration-count: 1; /* any number or 'infinite' for a looping animation */
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards; /* The end state of the animation is preserved at the end */
+  }
+  .outer-gradient {
+    background: -webkit-radial-gradient(center, rgba(9,8,0,1) 0%,rgba(255,255,255,0) 75% ,rgba(255,255,255,0) 100%);
+  }
+  .inner-gradient {
+    background: -webkit-radial-gradient(center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 65% ,rgba(255,255,255,0) 100%);;
+  }
+  .stroke {
+    border-style: solid;
+    border-color: white;
+    border-width: 0;
+    background-color: rgba(0,0,0,0);
+  }
+
+  &.tap-indicator-animation {
+
+    .outer-gradient {
+      -webkit-animation-name: outer-gradient-animation;
+    }
+    .inner-gradient {
+      -webkit-animation-name: inner-gradient-animation;
+    }
+    .stroke {
+      -webkit-animation-name: stroke-animation;
+    }
+  }
+}
+
+/* Animation */
+@-webkit-keyframes outer-gradient-animation {
+  from {
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+    left: -25px;
+    top: -25px;
+    opacity: 0.6;
+  }
+  to {
+    width: 150px;
+    height: 150px;
+    top: -75px;
+    left: -75px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes inner-gradient-animation {
+  from {
+    width: 0;
+    height: 0;
+    left: 25px;
+    top: 25px;
+  }
+  to {
+    width: 115px;
+    height: 115px;
+    top: 18px;
+    left: 18px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes stroke-animation {
+  from {
+    opacity: 1;
+    width: 25px;
+    height: 25px;
+    top: -12.5px;
+    left: -12.5px;
+    border-width: 1px;
+  }
+  to {
+    width: 102px;
+    height: 102px;
+    top: 0.1px;
+    left: 0.1px;
+    border-width: 5px;
+    opacity: 0;
+  }
+}
