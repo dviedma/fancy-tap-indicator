@@ -1,6 +1,6 @@
-Fancy Tap Indicator
+FANCY TAP INDICATOR
 
-http://thepolarway.com/fancy-tap-indicator/
+Click on the page: http://thepolarway.com/fancy-tap-indicator/
 
 * Made with Middleman
 * Only Webkit
