@@ -12,3 +12,9 @@
 
 # Ignore Sass' cache
 /.sass-cache
+/.idea
+/helpers
+.DS_Store
+.gitignore
+Gemfile
+Gemfile.lock

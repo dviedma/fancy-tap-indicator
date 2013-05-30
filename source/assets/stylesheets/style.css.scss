@@ -1,5 +1,6 @@
 //COMPASS IMPORTS
 @import 'compass/css3';
+@import "mixins";
 
 /* Reset */
 body {
@@ -18,17 +19,13 @@ body {
   .el {
     position: absolute;
     border-radius: 50%;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-delay: 0;
-    -webkit-animation-iteration-count: 1; /* any number or 'infinite' for a looping animation */
-    -webkit-animation-direction: normal;
-    -webkit-animation-fill-mode: forwards; /* The end state of the animation is preserved at the end */
+    @include animation-properties(1s);
   }
   .outer-gradient {
-    background: -webkit-radial-gradient(center, rgba(9,8,0,1) 0%,rgba(255,255,255,0) 75% ,rgba(255,255,255,0) 100%);
+    @include background-image(radial-gradient(center, rgba(9,8,0,1) 0%,rgba(255,255,255,0) 75% ,rgba(255,255,255,0) 100%));
   }
   .inner-gradient {
-    background: -webkit-radial-gradient(center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 65% ,rgba(255,255,255,0) 100%);;
+    @include background-image(radial-gradient(center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 65% ,rgba(255,255,255,0) 100%));
   }
   .stroke {
     border-style: solid;
@@ -40,19 +37,18 @@ body {
   &.tap-indicator-animation {
 
     .outer-gradient {
-      -webkit-animation-name: outer-gradient-animation;
+      @include animation-name( outer-gradient-animation );
     }
     .inner-gradient {
-      -webkit-animation-name: inner-gradient-animation;
+      @include animation-name( inner-gradient-animation );
     }
     .stroke {
-      -webkit-animation-name: stroke-animation;
+      @include animation-name( stroke-animation );
     }
   }
 }
 
-/* Animation */
-@-webkit-keyframes outer-gradient-animation {
+@include keyframes( outer-gradient-animation ) {
   from {
     opacity: 1;
     width: 50px;
@@ -69,7 +65,7 @@ body {
     opacity: 0;
   }
 }
-@-webkit-keyframes inner-gradient-animation {
+@include keyframes( inner-gradient-animation ) {
   from {
     width: 0;
     height: 0;
@@ -84,7 +80,7 @@ body {
     opacity: 0;
   }
 }
-@-webkit-keyframes stroke-animation {
+@include keyframes( stroke-animation ) {
   from {
     opacity: 1;
     width: 25px;
@@ -102,3 +98,4 @@ body {
     opacity: 0;
   }
 }
+

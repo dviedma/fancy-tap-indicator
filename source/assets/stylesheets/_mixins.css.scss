@@ -1,0 +1,47 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation-name($name) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  -ms-animation-name: $name;
+  animation-name: $name;
+}
+
+@mixin animation-properties($duration, $delay:0, $iteration-count: 1, $direction: 'normal', $fill-mode: 'forwards') {
+  -webkit-animation-duration: $duration;
+  -webkit-animation-delay: $delay;
+  -webkit-animation-iteration-count: $iteration-count;
+  -webkit-animation-direction: $direction;
+  -webkit-animation-fill-mode: $fill-mode;
+
+  -moz-animation-duration: $duration;
+  -moz-animation-delay: $delay;
+  -moz-animation-iteration-count: $iteration-count;
+  -moz-animation-direction: $direction;
+  -moz-animation-fill-mode: $fill-mode;
+
+  -ms-animation-duration: $duration;
+  -ms-animation-delay: $delay;
+  -ms-animation-iteration-count: $iteration-count;
+  -ms-animation-direction: $direction;
+  -ms-animation-fill-mode: $fill-mode;
+
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-iteration-count: $iteration-count;
+  animation-direction: $direction;
+  animation-fill-mode: $fill-mode;
+}

@@ -1,19 +1,17 @@
-var $tapIndicator = $('#tap-indicator'),
-    animationClass = 'tap-indicator-animation';
+var animationClass = 'tap-indicator-animation';
 
 $('body').on('click', function(e) {
 
-  $tapIndicator.css( {'left': e.clientX, 'top': e.clientY} )
-               .removeClass( animationClass );
+  var tapIndicator = document.getElementById('tap-indicator');
 
-  //Hack to force animation restart
-  setTimeout(function(){
-    $tapIndicator.addClass( animationClass );
-  }, 0);
+  $(tapIndicator).bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+    $($tapIndicator).removeClass( animationClass );
+  });
 
+  $(tapIndicator).css( {'left': e.clientX, 'top': e.clientY} )
+               .addClass( animationClass );
+
+  var newOne = tapIndicator.cloneNode(true);
+  tapIndicator.parentNode.replaceChild(newOne, tapIndicator);
 });
 
-//Only Webkit
-$tapIndicator.bind('webkitAnimationEnd', function(e) {
-  $tapIndicator.removeClass( animationClass );
-});
